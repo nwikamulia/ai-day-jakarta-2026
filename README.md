@@ -323,16 +323,13 @@ If you prefer to provision the connectors programmatically, POST each payload be
 Flink needs a connection to Amazon Bedrock and a registered model before it can call Claude from SQL.
 
 1. In the AWS Console, open **Amazon Bedrock**.
-
-> **[ SCREENSHOT ]** — _AWS Console → search "Bedrock" → Amazon Bedrock_
+<img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/81860c71-1e81-4a17-b9d6-219f0abcdde7" />
 
 2. Click **Inference profiles** in the left-hand menu.
-
-> **[ SCREENSHOT ]** — _Amazon Bedrock → Inference profiles_
+<img width="2560" height="1225" alt="image" src="https://github.com/user-attachments/assets/80bb5389-eb86-4810-a13d-d2066df94085" />
 
 3. Copy the **inference profile ID** of your preferred Claude model (for example, a Claude 3.5 Haiku profile).
-
-> **[ SCREENSHOT ]** — _Inference profiles list → copy the Inference profile ID_
+<img width="2560" height="1225" alt="image" src="https://github.com/user-attachments/assets/11be2987-c72f-483b-b91a-c1ae5708a0ce" />
 
 4. Note the **Inference Profile ID**, for example:
 
@@ -342,6 +339,8 @@ apac.anthropic.claude-3-7-sonnet-20250219-v1:0
 ```
 
 Now open the Confluent Cloud console. Click your environment name at the top left, then select **Flink** in the left-hand menu.
+<img width="512" height="246" alt="image" src="https://github.com/user-attachments/assets/25f7e0aa-42ef-4c96-8193-9600cf3193a2" />
+
 
 > **[ SCREENSHOT ]** — _Confluent Cloud → environment → Flink_
 
