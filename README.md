@@ -1,4 +1,4 @@
-<img width="902" height="762" alt="Screenshot 2026-08-28 at 11 28 10" src="https://github.com/user-attachments/assets/75f7e783-428d-48b8-a4ce-76840e01a8ca" /># KYC-Enriched Next Best Offer
+# KYC-Enriched Next Best Offer
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
