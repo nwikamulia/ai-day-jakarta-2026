@@ -334,8 +334,7 @@ Flink needs a connection to Amazon Bedrock and a registered model before it can 
 4. Note the **Inference Profile ID**, for example:
 
 ```text
-apac.anthropic.claude-3-5-sonnet-20240620-v1:0
-apac.anthropic.claude-3-7-sonnet-20250219-v1:0
+apac.anthropic.claude-3-haiku-20240307-v1:0
 ```
 
 Now open the Confluent Cloud console. Click your environment name at the top left:
