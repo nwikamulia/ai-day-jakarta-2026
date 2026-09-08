@@ -109,7 +109,7 @@ Email MCP tool  -  dispatches the outreach email
 
 8. Click **Launch cluster** to create your cluster.
 
-9. Generate a cluster **API Key and Secret**, and save them - you will need them for the Datagen connector configs.
+9. Generate a cluster **API Key and Secret**, and save them, you will need them for the Datagen connector configs.
 <img width="2560" height="1219" alt="image" src="https://github.com/user-attachments/assets/c3433ea7-3163-4f7a-b894-0cb2e66db1fe" />
 
 <img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/8e6c7760-9d63-4ca4-9efa-1d75d5bfbe21" />
