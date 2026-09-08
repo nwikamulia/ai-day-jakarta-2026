@@ -745,5 +745,3 @@ LATERAL TABLE(
 - A working email dispatch you can watch happen live, end to end, driven entirely from inside Confluent Cloud.
 
 ---
-
-_Co-authored with Glean._
