@@ -252,6 +252,13 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 > The `customer_id` and `item_id` option pools are intentionally the same 10 values across all three connectors. This guarantees that the Flink joins in Step 4 hit real matches instead of dead-ending on random, non-overlapping IDs.
 
 ### Option B - Postman (REST API)
+Create
+<img width="2155" height="1231" alt="image" src="https://github.com/user-attachments/assets/c32b5fd4-9a6d-4ba7-bc23-0e666ace4ac8" />
+
+<img width="2550" height="1284" alt="image" src="https://github.com/user-attachments/assets/c20ed7cb-de13-4318-a73d-e53b89d4f471" />
+
+
+
 Open Postman and click the Import button:
 <img width="2560" height="1317" alt="image" src="https://github.com/user-attachments/assets/e37639fb-3526-48c9-aeda-f630020f740a" />
 
