@@ -153,20 +153,21 @@ Email MCP tool  —  dispatches the outreach email
 
 We simulate three streams: `customers` (the KYC profile), `products` (catalog reference data), and `transactions` (live orders). All three use **AVRO** so Confluent Schema Registry can be leveraged.
 
-> **Note on the schemas**  
-> None of the schemas use `regex` — Datagen's AVRO mode rejects it. Every constrained field instead uses an `options` array or a numeric `range`.
-
 ### Option A — Confluent Cloud UI
 
-Go back to your environment by clicking the environment name at the top left of the page, then click **Clusters** in the left-hand menu.
+Go back to your environment by clicking the environment name at the top left of the page: 
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/7f3ea198-565e-4b56-95c6-70b56cd0baac" />
 
-> **[ SCREENSHOT ]** — _Environment overview → Clusters_
+Then click **Clusters** in the left-hand menu.
+<img width="2560" height="1232" alt="image" src="https://github.com/user-attachments/assets/ba7e2377-0ca8-4279-b347-fcc94be78c9e" />
 
-Click the cluster you created earlier (`kyc-nbo-cluster`), then click **Connectors** in the left-hand menu.
+Click the cluster you created earlier (`kyc-nbo-cluster`):
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/5a75a078-ce48-4f84-9d1c-f7f1f5b901b4" />
 
-> **[ SCREENSHOT ]** — _Cluster → Connectors_
+Click **Connectors** in the left-hand menu:
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/cffd7fae-bc86-4752-9779-f8aa0c114562" />
 
-Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → Additional Configuration**. Choose the **Custom Schema (AVRO)** option, set **Output record value format** to `AVRO`, and paste in each schema below.
+Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → Additional Configuration**. Choose the **Custom Schema (AVRO)** option.
 
 **For all three connectors, use these common settings:**
 
@@ -183,7 +184,7 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 
 **Schema:**
 
-```json
+```avro
 {
   "type": "record",
   "name": "Customer",
@@ -210,7 +211,7 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 
 **Schema:**
 
-```json
+```avro
 {
   "type": "record",
   "name": "Product",
@@ -232,7 +233,7 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 
 **Schema:**
 
-```json
+```avro
 {
   "type": "record",
   "name": "Transaction",
