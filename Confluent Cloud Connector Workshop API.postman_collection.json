@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "dd5eb2f1-8779-4976-9050-6533abf41761",
+    "name": "Confluent Cloud Connector Workshop API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48787330",
+    "_collection_link": "https://go.postman.co/collection/48787330-dd5eb2f1-8779-4976-9050-6533abf41761?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Connect API (V1)",
+      "item": [
+        {
+          "name": "Connectors Workshop",
+          "item": [
+            {
+              "name": "Create Connector Product",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"DatagenSource_Products\",\n  \"config\": {\n    \"connector.class\": \"DatagenSource\",\n    \"name\": \"DatagenSource_Products\",\n    \"kafka.api.key\": \"{{cluster_api_key}}\",\n    \"kafka.api.secret\": \"{{cluster_api_secret}}\",\n    \"kafka.topic\": \"products\",\n    \"output.data.format\": \"AVRO\",\n    \"max.interval\": \"1000\",\n    \"tasks.max\": \"1\",\n    \"schema.string\": \"{\\\"type\\\":\\\"record\\\",\\\"name\\\":\\\"Product\\\",\\\"fields\\\":[{\\\"name\\\":\\\"item_id\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"item_1\\\",\\\"item_2\\\",\\\"item_3\\\",\\\"item_4\\\",\\\"item_5\\\",\\\"item_6\\\",\\\"item_7\\\",\\\"item_8\\\",\\\"item_9\\\",\\\"item_10\\\"]}}},{\\\"name\\\":\\\"product_name\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Wireless Earbuds\\\",\\\"Running Shoes\\\",\\\"Rice Cooker\\\",\\\"Sofa Set\\\",\\\"Facial Serum\\\",\\\"Motor Oil\\\",\\\"Smart TV\\\",\\\"Backpack\\\",\\\"Blender\\\",\\\"Air Fryer\\\"]}}},{\\\"name\\\":\\\"category\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Electronics\\\",\\\"Fashion\\\",\\\"Groceries\\\",\\\"Home & Living\\\",\\\"Beauty\\\",\\\"Automotive\\\"]}}},{\\\"name\\\":\\\"price\\\",\\\"type\\\":{\\\"type\\\":\\\"double\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":50000,\\\"max\\\":5000000}}}},{\\\"name\\\":\\\"margin_tier\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Low\\\",\\\"Medium\\\",\\\"High\\\"]}}},{\\\"name\\\":\\\"inventory_level\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":0,\\\"max\\\":1000}}}}]}\"\n  }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{CONFLUENT_CLOUD_BASE_URL}}/connect/v1/environments/{{CONFLUENT_ENVIRONMENT}}/clusters/{{CONFLUENT_CLUSTER_ID}}/connectors",
+                  "host": [
+                    "{{CONFLUENT_CLOUD_BASE_URL}}"
+                  ],
+                  "path": [
+                    "connect",
+                    "v1",
+                    "environments",
+                    "{{CONFLUENT_ENVIRONMENT}}",
+                    "clusters",
+                    "{{CONFLUENT_CLUSTER_ID}}",
+                    "connectors"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Connector Customer",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"DatagenSource_Customers\",\n  \"config\": {\n    \"connector.class\": \"DatagenSource\",\n    \"name\": \"DatagenSource_Customers\",\n    \"kafka.api.key\": \"{{cluster_api_key}}\",\n    \"kafka.api.secret\": \"{{cluster_api_secret}}\",\n    \"kafka.topic\": \"customers\",\n    \"output.data.format\": \"AVRO\",\n    \"max.interval\": \"1000\",\n    \"tasks.max\": \"1\",\n    \"schema.string\": \"{\\\"type\\\":\\\"record\\\",\\\"name\\\":\\\"Customer\\\",\\\"fields\\\":[{\\\"name\\\":\\\"customer_id\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"customer_1\\\",\\\"customer_2\\\",\\\"customer_3\\\",\\\"customer_4\\\",\\\"customer_5\\\",\\\"customer_6\\\",\\\"customer_7\\\",\\\"customer_8\\\",\\\"customer_9\\\",\\\"customer_10\\\"]}}},{\\\"name\\\":\\\"name\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Andi Wijaya\\\",\\\"Siti Rahma\\\",\\\"Budi Santoso\\\",\\\"Dewi Lestari\\\",\\\"Rizky Pratama\\\",\\\"Nadia Putri\\\",\\\"Fajar Nugroho\\\",\\\"Maya Sari\\\",\\\"Agus Setiawan\\\",\\\"Rina Marlina\\\"]}}},{\\\"name\\\":\\\"email\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"andi.wijaya@example.com\\\",\\\"siti.rahma@example.com\\\",\\\"budi.santoso@example.com\\\",\\\"dewi.lestari@example.com\\\",\\\"rizky.pratama@example.com\\\",\\\"nadia.putri@example.com\\\",\\\"fajar.nugroho@example.com\\\",\\\"maya.sari@example.com\\\",\\\"agus.setiawan@example.com\\\",\\\"rina.marlina@example.com\\\"]}}},{\\\"name\\\":\\\"gender\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Male\\\",\\\"Female\\\"]}}},{\\\"name\\\":\\\"region\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Jakarta\\\",\\\"Jawa Barat\\\",\\\"Jawa Tengah\\\",\\\"Jawa Timur\\\",\\\"Bali\\\",\\\"Sumatra Utara\\\",\\\"Sulawesi Selatan\\\"]}}},{\\\"name\\\":\\\"employment_type\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Employed\\\",\\\"Self-Employed\\\",\\\"Business Owner\\\",\\\"Student\\\",\\\"Retired\\\"]}}},{\\\"name\\\":\\\"dependents\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":0,\\\"max\\\":5}}}},{\\\"name\\\":\\\"credit_score\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":300,\\\"max\\\":850}}}},{\\\"name\\\":\\\"risk_tier\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Low\\\",\\\"Medium\\\",\\\"High\\\"]}}},{\\\"name\\\":\\\"account_tenure_years\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":0,\\\"max\\\":20}}}},{\\\"name\\\":\\\"loyalty_tier\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"Bronze\\\",\\\"Silver\\\",\\\"Gold\\\",\\\"Platinum\\\"]}}}]}\"\n  }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{CONFLUENT_CLOUD_BASE_URL}}/connect/v1/environments/{{CONFLUENT_ENVIRONMENT}}/clusters/{{CONFLUENT_CLUSTER_ID}}/connectors",
+                  "host": [
+                    "{{CONFLUENT_CLOUD_BASE_URL}}"
+                  ],
+                  "path": [
+                    "connect",
+                    "v1",
+                    "environments",
+                    "{{CONFLUENT_ENVIRONMENT}}",
+                    "clusters",
+                    "{{CONFLUENT_CLUSTER_ID}}",
+                    "connectors"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Connector Transactions",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"DatagenSource_Transactions\",\n  \"config\": {\n    \"connector.class\": \"DatagenSource\",\n    \"name\": \"DatagenSource_Transactions\",\n    \"kafka.api.key\": \"{{cluster_api_key}}\",\n    \"kafka.api.secret\": \"{{cluster_api_secret}}\",\n    \"kafka.topic\": \"transactions\",\n    \"output.data.format\": \"AVRO\",\n    \"max.interval\": \"1000\",\n    \"tasks.max\": \"1\",\n    \"schema.string\": \"{\\\"type\\\":\\\"record\\\",\\\"name\\\":\\\"Transaction\\\",\\\"fields\\\":[{\\\"name\\\":\\\"order_id\\\",\\\"type\\\":{\\\"type\\\":\\\"long\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":1,\\\"max\\\":999999}}}},{\\\"name\\\":\\\"customer_id\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"customer_1\\\",\\\"customer_2\\\",\\\"customer_3\\\",\\\"customer_4\\\",\\\"customer_5\\\",\\\"customer_6\\\",\\\"customer_7\\\",\\\"customer_8\\\",\\\"customer_9\\\",\\\"customer_10\\\"]}}},{\\\"name\\\":\\\"item_id\\\",\\\"type\\\":{\\\"type\\\":\\\"string\\\",\\\"arg.properties\\\":{\\\"options\\\":[\\\"item_1\\\",\\\"item_2\\\",\\\"item_3\\\",\\\"item_4\\\",\\\"item_5\\\",\\\"item_6\\\",\\\"item_7\\\",\\\"item_8\\\",\\\"item_9\\\",\\\"item_10\\\"]}}},{\\\"name\\\":\\\"order_units\\\",\\\"type\\\":{\\\"type\\\":\\\"int\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":1,\\\"max\\\":5}}}},{\\\"name\\\":\\\"order_amount\\\",\\\"type\\\":{\\\"type\\\":\\\"double\\\",\\\"arg.properties\\\":{\\\"range\\\":{\\\"min\\\":10000,\\\"max\\\":5000000}}}}]}\"\n  }\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{CONFLUENT_CLOUD_BASE_URL}}/connect/v1/environments/{{CONFLUENT_ENVIRONMENT}}/clusters/{{CONFLUENT_CLUSTER_ID}}/connectors",
+                  "host": [
+                    "{{CONFLUENT_CLOUD_BASE_URL}}"
+                  ],
+                  "path": [
+                    "connect",
+                    "v1",
+                    "environments",
+                    "{{CONFLUENT_ENVIRONMENT}}",
+                    "clusters",
+                    "{{CONFLUENT_CLUSTER_ID}}",
+                    "connectors"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "{{CONFLUENT_CLOUD_API_SECRET}}",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "{{CONFLUENT_CLOUD_API_KEY}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "CONFLUENT_CONNECT_BASE_URL",
+      "value": "https://api.confluent.cloud"
+    },
+    {
+      "key": "CONNECTOR_NAME",
+      "value": ""
+    },
+    {
+      "key": "API_KEY_CLUSTER",
+      "value": ""
+    },
+    {
+      "key": "API_SECRET_CLUSTER",
+      "value": ""
+    },
+    {
+      "key": "DB_PASS",
+      "value": ""
+    }
+  ]
+}
