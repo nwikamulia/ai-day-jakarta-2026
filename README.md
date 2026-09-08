@@ -2,7 +2,7 @@
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
-A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to end: streaming data generation, Flink SQL enrichment and deterministic risk logic, and two independent Flink Streaming Agents that hand work off to each other through a Kafka topic — the first composing a personalized offer, the second dispatching the outreach email through an MCP tool.
+A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to end: streaming data generation, Flink SQL enrichment and deterministic risk logic, and two independent Flink Streaming Agents that hand work off to each other through a Kafka topic, the first composing a personalized offer, the second dispatching the outreach email through an MCP tool.
 
 ---
 
@@ -14,7 +14,7 @@ A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to
 4. [Step 1: Set Up the Environment](#step-1-set-up-the-environment)
 5. [Step 2: Generate KYC-Rich Mock Data (Datagen)](#step-2-generate-kyc-rich-mock-data-datagen)
 6. [Step 3: Configure the Amazon Bedrock Connection and Model](#step-3-configure-the-amazon-bedrock-connection-and-model)
-7. [Step 4: Stream Processing — Enrichment and KYC Business Logic](#step-4-stream-processing--enrichment-and-kyc-business-logic)
+7. [Step 4: Stream Processing - Enrichment and KYC Business Logic](#step-4-stream-processing--enrichment-and-kyc-business-logic)
 8. [Step 5: Agent 1 - NBO Recommender](#step-5-agent-1--nbo-recommender-flink-streaming-agent)
 9. [Step 6: Provision the Email Dispatch Tool (MCP Server)](#step-6-provision-the-email-dispatch-tool-mcp-server)
 10. [Step 7: Agent 2 - Email Dispatch Agent](#step-7-agent-2--email-dispatch-agent-flink-streaming-agent)
@@ -27,10 +27,10 @@ A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to
 
 A retail bank wants to move beyond simple "buy X, get offer Y" logic. Every time a customer transacts, the bank wants to:
 
-1. Build a rich **KYC (Know Your Customer)** profile in real time — not just demographics, but credit risk, dependents, employment, and account tenure.
-2. Use that profile to compute a **deterministic offer quadrant** — the actual risk-based eligibility logic a bank uses to decide who qualifies for what.
+1. Build a rich **KYC (Know Your Customer)** profile in real time, not just demographics, but credit risk, dependents, employment, and account tenure.
+2. Use that profile to compute a **deterministic offer quadrant**, the actual risk-based eligibility logic a bank uses to decide who qualifies for what.
 3. Use **generative AI** to turn that quadrant into a personalized, on-brand message. This is the enrichment layer AI adds on top of the deterministic logic.
-4. Have a second, independent AI agent pick up qualifying offers and autonomously compose and dispatch the outreach email — with the two agents communicating asynchronously through a Kafka topic, exactly the way independent microservices would in production.
+4. Have a second, independent AI agent pick up qualifying offers and autonomously compose and dispatch the outreach email with the two agents communicating asynchronously through a Kafka topic, exactly the way independent microservices would in production.
 
 This workshop builds that whole pipeline end to end:
 
@@ -46,16 +46,16 @@ The pipeline is a linear stream of stages. Each stage reads from the stage befor
 Datagen  (customers, products, transactions)
     |
     v
-Flink SQL  —  3-way JOIN + enrichment
+Flink SQL  -  3-way JOIN + enrichment
     |
     v
-Flink SQL  —  deterministic KYC business logic
+Flink SQL  -  deterministic KYC business logic
     (credit_score, risk_tier, dependents, employment_type,
      account_tenure_years  ->  customer_segment,
      target_offer_quadrant, should_email)
     |
     v
-Agent 1  —  nbo_recommender_agent  (Flink Streaming Agent)
+Agent 1  -  nbo_recommender_agent  (Flink Streaming Agent)
     reasons over the KYC + offer context  ->  personalized offer text
     |
     v
@@ -63,15 +63,15 @@ Kafka topic: next_best_offers      <=== agent-to-agent handoff point
     (rows where should_email = TRUE)
     |
     v
-Agent 2  —  email_dispatch_agent  (Flink Streaming Agent)
+Agent 2  -  email_dispatch_agent  (Flink Streaming Agent)
     composes subject/body  ->  calls the send_email tool
     |
     v
-Email MCP tool  —  dispatches the outreach email
+Email MCP tool  -  dispatches the outreach email
 ```
 
 > **Why two independent agents instead of one big prompt?**  
-> Agent 1 and Agent 2 never call each other directly as functions. Agent 1 publishes its decision as an event to a Kafka topic, and Agent 2 reacts to that event on its own schedule. This is the same event-driven, decoupled pattern any two microservices would use — and it means each agent can be scaled, replayed, debugged, and redeployed independently. That is a core benefit of building agents natively on Flink rather than gluing scripts together.
+> Agent 1 and Agent 2 never call each other directly as functions. Agent 1 publishes its decision as an event to a Kafka topic, and Agent 2 reacts to that event on its own schedule. This is the same event-driven, decoupled pattern any two microservices would use - and it means each agent can be scaled, replayed, debugged, and redeployed independently. That is a core benefit of building agents natively on Flink rather than gluing scripts together.
 
 ---
 
