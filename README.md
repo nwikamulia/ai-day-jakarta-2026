@@ -251,6 +251,21 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 > The `customer_id` and `item_id` option pools are intentionally the same 10 values across all three connectors. This guarantees that the Flink joins in Step 4 hit real matches instead of dead-ending on random, non-overlapping IDs.
 
 ### Option B - Postman (REST API)
+Open Postman and click the Import button:
+<img width="2560" height="1317" alt="image" src="https://github.com/user-attachments/assets/e37639fb-3526-48c9-aeda-f630020f740a" />
+
+Upload the Postman collection you downloaded previously:
+<img width="2560" height="1321" alt="image" src="https://github.com/user-attachments/assets/8edcece9-062f-41c2-a5ac-40442a3ea19d" />
+
+Fill the environment variables:
+<img width="2560" height="1322" alt="image" src="https://github.com/user-attachments/assets/4eae926a-f0d0-463e-a647-c2e6b5c1d47a" />
+
+You can fill in these environment variables with the following values:
+- **CONFLUENT_CLOUD_BASE_URL:** 'https://api.confluent.cloud'
+- **CONFLUENT_ENVIRONMENT:** Your Confluent Cloud environment ID, for example: env-86g1rm. You can find the environment ID in the Details tab of the Environment page.
+- **CONFLUENT_CLUSTER_ID:** Your Confluent Cloud Kafka cluster ID, for example: lkc-mvz5x8w. You can find the Kafka cluster ID in the Clusters page.
+- **cluster_api_key:** The Kafka cluster API key that you created in the previous step.
+- **cluster_api_secret:** The Kafka cluster API secret that you created in the previous step.
 
 If you prefer to provision the connectors programmatically, POST each payload below.
 
