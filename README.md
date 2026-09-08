@@ -257,6 +257,8 @@ Open Postman and click the Import button:
 Upload the Postman collection you downloaded previously:
 <img width="2560" height="1321" alt="image" src="https://github.com/user-attachments/assets/8edcece9-062f-41c2-a5ac-40442a3ea19d" />
 
+Open the "Create Connector Product" file:
+
 Fill the environment variables:
 <img width="2560" height="1322" alt="image" src="https://github.com/user-attachments/assets/4eae926a-f0d0-463e-a647-c2e6b5c1d47a" />
 
@@ -266,6 +268,8 @@ You can fill in these environment variables with the following values:
 - **CONFLUENT_CLUSTER_ID:** Your Confluent Cloud Kafka cluster ID, for example: lkc-mvz5x8w. You can find the Kafka cluster ID in the Clusters page.
 - **cluster_api_key:** The Kafka cluster API key that you created in the previous step.
 - **cluster_api_secret:** The Kafka cluster API secret that you created in the previous step.
+
+Click the Send button to create the connector. Then, repeat the same step for the "Create Connector Transactions" and the "Create Connector Customer" files.
 
 If you prefer to provision the connectors programmatically, POST each payload below.
 
