@@ -250,7 +250,7 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 > **Why the ID pools overlap**  
 > The `customer_id` and `item_id` option pools are intentionally the same 10 values across all three connectors. This guarantees that the Flink joins in Step 4 hit real matches instead of dead-ending on random, non-overlapping IDs.
 
-### Option B — Postman (REST API)
+### Option B - Postman (REST API)
 
 If you prefer to provision the connectors programmatically, POST each payload below.
 
