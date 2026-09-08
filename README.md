@@ -108,7 +108,7 @@ Email MCP tool  -  dispatches the outreach email
 
 8. Click **Launch cluster** to create your cluster.
 
-9. Generate a cluster **API Key and Secret**, and save them — you will need them for the Datagen connector configs.
+9. Generate a cluster **API Key and Secret**, and save them - you will need them for the Datagen connector configs.
 <img width="2560" height="1219" alt="image" src="https://github.com/user-attachments/assets/c3433ea7-3163-4f7a-b894-0cb2e66db1fe" />
 
 <img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/8e6c7760-9d63-4ca4-9efa-1d75d5bfbe21" />
@@ -153,7 +153,7 @@ Email MCP tool  -  dispatches the outreach email
 
 We simulate three streams: `customers` (the KYC profile), `products` (catalog reference data), and `transactions` (live orders). All three use **AVRO** so Confluent Schema Registry can be leveraged.
 
-### Option A — Confluent Cloud UI
+### Option A - Confluent Cloud UI
 
 Go back to your environment by clicking the environment name at the top left of the page: 
 <img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/7f3ea198-565e-4b56-95c6-70b56cd0baac" />
