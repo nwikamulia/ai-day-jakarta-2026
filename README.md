@@ -1,4 +1,4 @@
-# KYC-Enriched Next Best Offer
+<img width="902" height="762" alt="Screenshot 2026-08-28 at 11 28 10" src="https://github.com/user-attachments/assets/75f7e783-428d-48b8-a4ce-76840e01a8ca" /># KYC-Enriched Next Best Offer
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
@@ -88,6 +88,7 @@ Email MCP tool  —  dispatches the outreach email
 1. Log in to Confluent Cloud.
 2. You will create an **Environment** (e.g., `workshop-kyc-nbo`) and a **Cluster** (e.g., `kyc-nbo-cluster`). The steps below walk through both.
 3. On the Confluent Cloud home screen, select **Environments** in the left-hand menu.
+<img width="431" height="261" alt="Picture1" src="https://github.com/user-attachments/assets/cfccf0b8-ca3f-4f52-89ca-633d763f6694" />
 
 > **[ SCREENSHOT ]** — _Confluent Cloud home → Environments in the left-hand menu_
 
