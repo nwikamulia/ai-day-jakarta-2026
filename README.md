@@ -1,4 +1,4 @@
-# KYC-Enriched Next Best Offer
+<img width="1318" height="631" alt="6" src="https://github.com/user-attachments/assets/197178c0-bc17-4caf-a121-6d6e61d35a6d" /><img width="1295" height="620" alt="4" src="https://github.com/user-attachments/assets/0e566195-bf01-486b-b538-508017b64fab" /><img width="1288" height="619" alt="Picture1" src="https://github.com/user-attachments/assets/c685d4ae-44bf-4c59-afb5-7a96371a6949" /># KYC-Enriched Next Best Offer
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
@@ -567,26 +567,39 @@ Since we only have 10 distinct customers in this workshop, this join and aggrega
 
 This is the tool Agent 2 will call. It exposes a single `send_email` capability over the Model Context Protocol (MCP). In this workshop we use **Zapier's hosted MCP server** wired to the Gmail **Send Email** action.
 
-> **Editor's note — reconcile "mock" vs. real send**  
-> Your first draft framed this as a local "mock" email server (referencing a `mock_email_server.py` script and a `sent_emails.log` file) that only logs emails. The steps below instead use Zapier + Gmail, which sends real email from the account you connect. Please pick one path before the event: (a) keep Zapier + Gmail as written, or (b) swap in the local Python mock MCP server for a safe, no-real-send demo. If you keep Zapier, consider connecting a throwaway Gmail account and/or sending only to your own address.
-
 ### 1. Create a free Zapier account
 
-Sign up for a free account at `zapier.com` and verify your email.
+Sign up for a free account at `zapier.com` and verify your email:
+<img width="1588" height="757" alt="Picture1" src="https://github.com/user-attachments/assets/461104c4-5cb3-4f50-9bd2-f966852cd4c3" />
+
+You will be asked a few onboarding questions (role, company size, seniority, relevant apps), answer these any way you like.
+<img width="1294" height="614" alt="Picture2" src="https://github.com/user-attachments/assets/3f58cc0d-c5c8-4028-bcf2-41416a8efacc" />
+
+<img width="1421" height="680" alt="Picture3" src="https://github.com/user-attachments/assets/06bc81cf-cabf-421f-a643-09f9f23d9d5f" />
+
+<img width="1288" height="619" alt="Picture1" src="https://github.com/user-attachments/assets/39099fb1-4c5a-422c-8dab-1fdba3a1a905" />
 
 ### 2. Create the MCP server
+Click **MCP Servers** in the left-hand menu:
+<img width="1280" height="613" alt="2" src="https://github.com/user-attachments/assets/4fc0ab79-b66e-4414-9081-23c15c784f51" />
 
-Visit `mcp.zapier.com`, choose **Other** as the MCP client, and create your server. You will be asked a few onboarding questions (role, company size, seniority, relevant apps) — answer these any way you like.
+Click **See all**:
+<img width="1251" height="601" alt="3" src="https://github.com/user-attachments/assets/e8b68af4-3f2f-4fec-a44e-0b44dd5aaccc" />
 
-> **[ SCREENSHOT ]** — _Zapier sign-up and onboarding questions_
+Click **Other**:
+<img width="1295" height="620" alt="4" src="https://github.com/user-attachments/assets/0ac16778-cd0d-4918-b9d2-54c7ffc6ea86" />
 
-Click **MCP Servers** in the left-hand menu, then **See all**, then **Other**.
+Click **Add apps**: 
+<img width="1311" height="612" alt="5" src="https://github.com/user-attachments/assets/a3ff45b9-a1b4-4391-a4d6-d997d60dfea7" />
 
-> **[ SCREENSHOT ]** — _Zapier → MCP Servers → See all → Other_
+Click **Gmail**: 
+<img width="1318" height="631" alt="6" src="https://github.com/user-attachments/assets/9fe43d69-7d69-4782-852e-65b5b1f547af" />
 
-Click **Add apps**, choose **Gmail**, then select the **Send Email** tool and click **Connect**.
+Choose **Send Email** tool:
+<img width="1297" height="623" alt="1" src="https://github.com/user-attachments/assets/a221d4e5-61a4-49d2-a403-4b7ac579cded" />
 
-> **[ SCREENSHOT ]** — _Add apps → Gmail → Send Email → Connect_
+Click **Connect**:
+<img width="1298" height="624" alt="2" src="https://github.com/user-attachments/assets/ce905820-fc01-4a50-a872-0ff20840dcaa" />
 
 Work through the Gmail connection prompts: choose your Google account, click **Continue**, grant Zapier the required permissions by checking all the boxes, scroll down and click **Continue**, then click **Add tool**.
 
