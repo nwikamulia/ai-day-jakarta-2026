@@ -1,4 +1,4 @@
-# KYC-Enriched Next Best Offer
+<img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/4f2bd0f9-a58c-4efb-8b62-f943f63cf184" /># KYC-Enriched Next Best Offer
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
@@ -96,34 +96,41 @@ Email MCP tool  —  dispatches the outreach email
 5. Create an environment with the following specifications:
    - Environment name: `workshop-kyc-nbo`
    - Stream Governance package: **Essentials**
+<img width="2560" height="1233" alt="image" src="https://github.com/user-attachments/assets/0b0c880e-806e-4d21-a130-b1b5d91b7544" />
+
 6. Click **Create** to finish setting up the environment.
 7. Create a Kafka cluster with the following specifications:
    - Cluster name: `kyc-nbo-cluster`
    - Cluster type: **Basic**
    - Cloud provider: **AWS**
    - Region: **Singapore (ap-southeast-1)**
+<img width="2560" height="1215" alt="image" src="https://github.com/user-attachments/assets/4a272de5-bea5-4b85-b122-6e982c3aabb3" />
+
 8. Click **Launch cluster** to create your cluster.
 
-> **[ SCREENSHOT ]** — _Create cluster form → Basic / AWS / Singapore (ap-southeast-1)_
-
 9. Generate a cluster **API Key and Secret**, and save them — you will need them for the Datagen connector configs.
+<img width="2560" height="1219" alt="image" src="https://github.com/user-attachments/assets/c3433ea7-3163-4f7a-b894-0cb2e66db1fe" />
 
-> **[ SCREENSHOT ]** — _Cluster → API keys → Create key → download and save_
+<img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/8e6c7760-9d63-4ca4-9efa-1d75d5bfbe21" />
 
 > **Tip**  
 > Store the API key and secret somewhere safe as soon as you download them. Confluent Cloud shows the secret only once, and every Datagen connector in Step 2 needs it.
 
 10. Create the topics needed for the workshop. Select **Topics** in the left-hand menu, then click **Create topic**. Name the first topic `customers` and set **Partitions** to `1`.
-
-> **[ SCREENSHOT ]** — _Topics → Create topic → name "customers", partitions = 1_
+<img width="2560" height="1222" alt="image" src="https://github.com/user-attachments/assets/8aa1edc9-62c8-4012-88a9-80cf9b2edad7" />
+<img width="2560" height="1224" alt="image" src="https://github.com/user-attachments/assets/dd582a0a-5605-4e99-87c5-a6116d34fc63" />
 
 11. If you are prompted to add a data contract, click **Skip**.
-12. Repeat the previous two steps to create the `products` and `transactions` topics (partitions = 1 each).
-13. Under the **Flink** tab, you will create a Flink compute pool in the same region as your cluster. Return to the Clusters page by clicking the **Clusters** link at the top left.
-14. In the left-hand menu, select **Flink**.
-15. Click the **Compute pools** tab.
-16. Click **Add compute pool**.
-17. Choose your cloud provider (**AWS**) and region (**Singapore**). The Flink compute pool must match the Kafka cluster's region.
+<img width="2560" height="1229" alt="image" src="https://github.com/user-attachments/assets/131fac15-d32e-4b9d-86c1-f547305aadeb" />
+
+13. Repeat the previous two steps to create the `products` and `transactions` topics (partitions = 1 each).
+14. After creating the topics, now you will create a Flink compute pool in the same region as your cluster. To do that, return to the Clusters page by clicking the **Clusters** link at the top left.
+<img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/8bdab0de-8f84-4381-b486-52eb965a9f78" />
+
+16. In the left-hand menu, select **Flink**.
+17. Click the **Compute pools** tab.
+18. Click **Add compute pool**.
+19. Choose your cloud provider (**AWS**) and region (**Singapore**). The Flink compute pool must match the Kafka cluster's region.
 
 > **[ SCREENSHOT ]** — _Create compute pool → AWS, Singapore (ap-southeast-1)_
 
