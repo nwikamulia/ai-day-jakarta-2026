@@ -606,18 +606,17 @@ Work through the Gmail connection prompts by clicking Connect:
 Choose your Google account: 
 <img width="1305" height="625" alt="image" src="https://github.com/user-attachments/assets/49d1bfc4-bf96-478d-a79d-360d3f92e7b1" />
 
-> **[ SCREENSHOT ]** — _Gmail OAuth consent → grant permissions → Add tool_
-
 click **Continue**: 
-
+<img width="1302" height="623" alt="image" src="https://github.com/user-attachments/assets/8b61d066-d26c-40e5-a41d-d39deeaf561b" />
 
 Grant Zapier the required permissions by checking all the boxes: 
-
+<img width="1306" height="625" alt="image" src="https://github.com/user-attachments/assets/5ee16e30-d7a9-411e-8da3-7ec1aaf976d4" />
 
 Scroll down and click **Continue** 
-
+<img width="1319" height="631" alt="image" src="https://github.com/user-attachments/assets/740237c6-5946-4576-9371-889e56f268b3" />
 
 Click **Add tool**.
+<img width="1321" height="629" alt="image" src="https://github.com/user-attachments/assets/07a46c57-5f33-4ba5-bbb5-20a3da15aa12" />
 
 
 Open the **Connect** tab and click **Generate token**. Copy the token — you will paste it into the Flink MCP connection in Step 7.
