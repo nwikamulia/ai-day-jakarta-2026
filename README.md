@@ -393,7 +393,7 @@ WITH (
 
 ---
 
-## Step 4: Stream Processing — Enrichment and KYC Business Logic
+## Step 4: Stream Processing - Enrichment and KYC Business Logic
 
 ### 4.1 Enrich transactions with the KYC profile and product catalog
 
