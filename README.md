@@ -606,7 +606,7 @@ Work through the Gmail connection prompts by clicking Connect:
 Choose your Google account: 
 <img width="1305" height="625" alt="image" src="https://github.com/user-attachments/assets/49d1bfc4-bf96-478d-a79d-360d3f92e7b1" />
 
-click **Continue**: 
+Click **Continue**: 
 <img width="1302" height="623" alt="image" src="https://github.com/user-attachments/assets/8b61d066-d26c-40e5-a41d-d39deeaf561b" />
 
 Grant Zapier the required permissions by checking all the boxes: 
@@ -618,10 +618,13 @@ Scroll down and click **Continue**
 Click **Add tool**.
 <img width="1321" height="629" alt="image" src="https://github.com/user-attachments/assets/07a46c57-5f33-4ba5-bbb5-20a3da15aa12" />
 
+Open the **Connect** tab: 
+<img width="1314" height="632" alt="image" src="https://github.com/user-attachments/assets/0271c96c-08ba-4a13-939a-23ecac2bb311" />
 
-Open the **Connect** tab and click **Generate token**. Copy the token — you will paste it into the Flink MCP connection in Step 7.
+Click **Generate token**. 
+<img width="1314" height="629" alt="image" src="https://github.com/user-attachments/assets/811b1690-3a85-470e-9da5-a0deda13dd21" />
 
-> **[ SCREENSHOT ]** — _Zapier MCP → Connect tab → Generate token_
+Copy and save the token. You will paste it into the Flink MCP connection in Step 7.
 
 > **Guard your Zapier token**  
 > The generated token authorizes sending email from your connected Gmail account. Treat it like a password: do not commit it to a repository, and do not leave it visible on a projected screen.
