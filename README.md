@@ -697,6 +697,7 @@ WITH (
 
 Agent 1 and Agent 2 never call each other as functions. Agent 2 simply reacts to rows landing in `next_best_offers` where `should_email = TRUE`, the Kafka topic itself is the communication channel between the two agents. We use `INSERT INTO` (not `CREATE VIEW`), since `LATERAL TABLE` inside a view is unreliable in the console workspace:
 
+Creates the log table that records each email dispatch attempt, including timestamp, customer ID, status, and response:
 ```sql
 CREATE TABLE email_dispatch_log (
   dispatch_time TIMESTAMP_LTZ(3),
@@ -706,10 +707,11 @@ CREATE TABLE email_dispatch_log (
 );
 ```
 
+Sets next_best_offers to append-only changelog mode, enabling it to be consumed as a stream in the next step:
 ```sql
 ALTER TABLE next_best_offers SET ('changelog.mode' = 'append');
 ```
-
+Streams eligible offers (should_email = TRUE) through the email_dispatch_agent AI agent to send personalized emails, then logs the agent's status and response for each customer:
 ```sql
 INSERT INTO email_dispatch_log
 SELECT
@@ -743,7 +745,7 @@ LATERAL TABLE(
   )
 ) AS a(status, response);
 ```
-
+Retrieves the full dispatch log for review/verification:
 ```sql
 SELECT * FROM email_dispatch_log;
 ```
