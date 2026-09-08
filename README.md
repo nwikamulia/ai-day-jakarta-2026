@@ -15,9 +15,9 @@ A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to
 5. [Step 2: Generate KYC-Rich Mock Data (Datagen)](#step-2-generate-kyc-rich-mock-data-datagen)
 6. [Step 3: Configure the Amazon Bedrock Connection and Model](#step-3-configure-the-amazon-bedrock-connection-and-model)
 7. [Step 4: Stream Processing — Enrichment and KYC Business Logic](#step-4-stream-processing--enrichment-and-kyc-business-logic)
-8. [Step 5: Agent 1 — NBO Recommender](#step-5-agent-1--nbo-recommender-flink-streaming-agent)
+8. [Step 5: Agent 1 - NBO Recommender](#step-5-agent-1--nbo-recommender-flink-streaming-agent)
 9. [Step 6: Provision the Email Dispatch Tool (MCP Server)](#step-6-provision-the-email-dispatch-tool-mcp-server)
-10. [Step 7: Agent 2 — Email Dispatch Agent](#step-7-agent-2--email-dispatch-agent-flink-streaming-agent)
+10. [Step 7: Agent 2 - Email Dispatch Agent](#step-7-agent-2--email-dispatch-agent-flink-streaming-agent)
 11. [Step 8: End-to-End Test](#step-8-end-to-end-test)
 12. [Expected Results](#expected-results)
 
@@ -467,7 +467,7 @@ FROM enriched_customer_orders;
 
 ---
 
-## Step 5: Agent 1 — NBO Recommender (Flink Streaming Agent)
+## Step 5: Agent 1 - NBO Recommender (Flink Streaming Agent)
 
 This agent takes the deterministic quadrant and KYC context and turns it into a short, culturally appropriate promotional message.
 
@@ -631,7 +631,7 @@ Copy and save the token. You will paste it into the Flink MCP connection in Step
 
 ---
 
-## Step 7: Agent 2 — Email Dispatch Agent (Flink Streaming Agent)
+## Step 7: Agent 2 - Email Dispatch Agent (Flink Streaming Agent)
 
 ### 7.1 Connect Flink to the email MCP server
 
