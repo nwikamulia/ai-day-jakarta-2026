@@ -432,7 +432,7 @@ JOIN products p ON t.item_id = p.item_id;
 
 ### 4.2 Apply deterministic KYC business logic
 
-This is the layer that decides what offer a customer qualifies for and whether it is worth a proactive email — before any AI text generation happens.
+This is the layer that decides what offer a customer qualifies for and whether it is worth a proactive email before any AI text generation happens.
 
 ```sql
 CREATE VIEW nbo_business_logic AS
@@ -463,7 +463,7 @@ FROM enriched_customer_orders;
 ```
 
 > **Why this separation matters**  
-> Notice that `should_email` is fully deterministic and auditable — the AI never decides whether to reach out, only how to word the message once the business has already decided to. This clean split between deterministic business logic and generative wording is exactly what a regulated bank needs for compliance.
+> Notice that `should_email` is fully deterministic and auditable, the AI never decides whether to reach out, only how to word the message once the business has already decided to. This clean split between deterministic business logic and generative wording is exactly what a regulated bank needs for compliance.
 
 ---
 
@@ -694,9 +694,9 @@ WITH (
 );
 ```
 
-### 7.3 Trigger Agent 2 from Agent 1's output — the agent-to-agent handoff
+### 7.3 Trigger Agent 2 from Agent 1's output - the agent-to-agent handoff
 
-Agent 1 and Agent 2 never call each other as functions. Agent 2 simply reacts to rows landing in `next_best_offers` where `should_email = TRUE` — the Kafka topic itself is the communication channel between the two agents. We use `INSERT INTO` (not `CREATE VIEW`), since `LATERAL TABLE` inside a view is unreliable in the console workspace:
+Agent 1 and Agent 2 never call each other as functions. Agent 2 simply reacts to rows landing in `next_best_offers` where `should_email = TRUE`, the Kafka topic itself is the communication channel between the two agents. We use `INSERT INTO` (not `CREATE VIEW`), since `LATERAL TABLE` inside a view is unreliable in the console workspace:
 
 ```sql
 CREATE TABLE email_dispatch_log (
@@ -742,7 +742,7 @@ LATERAL TABLE(
 ```
 
 > **What you should see**  
-> Once this runs, check your email dispatch destination — the Gmail Sent folder (or your Zapier task history), and `email_dispatch_log` in Flink. You should see personalized emails appearing for every qualifying customer, composed entirely by Agent 2 and dispatched entirely because Agent 1 decided to hand the work off. (If you chose the local Python mock server instead, watch its terminal and the `sent_emails.log` file grow.)
+> Once this runs, check your email dispatch destination, the Gmail Sent folder (or your Zapier task history), and `email_dispatch_log` in Flink. You should see personalized emails appearing for every qualifying customer, composed entirely by Agent 2 and dispatched entirely because Agent 1 decided to hand the work off. (If you chose the local Python mock server instead, watch its terminal and the `sent_emails.log` file grow.)
 
 ---
 
@@ -751,14 +751,14 @@ LATERAL TABLE(
 1. Confirm all three Datagen connectors are **RUNNING** and producing to `customers`, `products`, and `transactions`.
 2. Confirm `enriched_customer_orders` and `nbo_business_logic` return rows with a simple query: `SELECT * FROM nbo_business_logic LIMIT 10;`
 3. Confirm `next_best_offers` is populating: `SELECT * FROM next_best_offers;`
-4. Confirm `email_dispatch_log` is populating for `should_email = TRUE` rows, and that emails are actually going out — check the connected Gmail account's Sent folder and your Zapier task history (or, for the local mock, confirm `sent_emails.log` is growing).
+4. Confirm `email_dispatch_log` is populating for `should_email = TRUE` rows, and that emails are actually going out, check the connected Gmail account's Sent folder and your Zapier task history (or, for the local mock, confirm `sent_emails.log` is growing).
 
 ---
 
 ## Expected Results
 
 - A live, three-source, KYC-aware Next Best Offer pipeline running entirely on Confluent Cloud and Flink SQL.
-- A clear separation between deterministic, auditable business logic (who qualifies, for what, and whether to email) and generative AI (how to word it) — the standard pattern for AI in regulated industries.
+- A clear separation between deterministic, auditable business logic (who qualifies, for what, and whether to email) and generative AI (how to word it), the standard pattern for AI in regulated industries.
 - Two independently deployed, independently scalable Flink Streaming Agents that hand off work purely through a Kafka topic, with every decision and tool call logged and replayable.
 - A working email dispatch you can watch happen live, end to end, driven entirely from inside Confluent Cloud.
 
