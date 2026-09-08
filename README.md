@@ -1,4 +1,4 @@
-<img width="1318" height="631" alt="6" src="https://github.com/user-attachments/assets/197178c0-bc17-4caf-a121-6d6e61d35a6d" /><img width="1295" height="620" alt="4" src="https://github.com/user-attachments/assets/0e566195-bf01-486b-b538-508017b64fab" /><img width="1288" height="619" alt="Picture1" src="https://github.com/user-attachments/assets/c685d4ae-44bf-4c59-afb5-7a96371a6949" /># KYC-Enriched Next Best Offer
+# KYC-Enriched Next Best Offer
 
 ### with Agent-to-Agent Email Outreach on Confluent Cloud & Flink
 
@@ -577,7 +577,6 @@ You will be asked a few onboarding questions (role, company size, seniority, rel
 
 <img width="1421" height="680" alt="Picture3" src="https://github.com/user-attachments/assets/06bc81cf-cabf-421f-a643-09f9f23d9d5f" />
 
-<img width="1288" height="619" alt="Picture1" src="https://github.com/user-attachments/assets/39099fb1-4c5a-422c-8dab-1fdba3a1a905" />
 
 ### 2. Create the MCP server
 Click **MCP Servers** in the left-hand menu:
