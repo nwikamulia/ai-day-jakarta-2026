@@ -128,14 +128,21 @@ Email MCP tool  —  dispatches the outreach email
 <img width="2560" height="1223" alt="image" src="https://github.com/user-attachments/assets/8bdab0de-8f84-4381-b486-52eb965a9f78" />
 
 16. In the left-hand menu, select **Flink**.
-17. Click the **Compute pools** tab.
-18. Click **Add compute pool**.
-19. Choose your cloud provider (**AWS**) and region (**Singapore**). The Flink compute pool must match the Kafka cluster's region.
+<img width="2560" height="1231" alt="image" src="https://github.com/user-attachments/assets/43ea55e2-8cbe-4c6e-8ea0-77f12fa78c1e" />
 
-> **[ SCREENSHOT ]** — _Create compute pool → AWS, Singapore (ap-southeast-1)_
+18. Click the **Compute pools** tab.
+<img width="2560" height="1231" alt="image" src="https://github.com/user-attachments/assets/ded5a6d6-c70f-4dc1-a95c-a1b57782d37d" />
+
+20. Click **Add compute pool**.
+<img width="2560" height="1229" alt="image" src="https://github.com/user-attachments/assets/e9035b60-40ab-4789-a3f8-4cbda7016583" />
+
+22. Choose your cloud provider (**AWS**) and region (**Singapore**). The Flink compute pool must match the Kafka cluster's region.
+<img width="2560" height="1224" alt="image" src="https://github.com/user-attachments/assets/82db5021-365d-4335-bc10-09cdc8706c32" />
 
 18. Name the pool `kyc_computepool` and set **Max size** to **20 CFU**.
-19. Click **Create** to create your compute pool.
+<img width="2560" height="1226" alt="image" src="https://github.com/user-attachments/assets/dc9a497f-8cf7-47fe-a129-a2a37e481a1e" />
+
+20. Click **Create** to create your compute pool.
 
 > **Why the region must match**  
 > A Flink compute pool can only read and write Kafka topics that live in the same cloud region. If the pool and the cluster are in different regions, none of the SQL statements in Steps 4–7 will be able to see your topics.
