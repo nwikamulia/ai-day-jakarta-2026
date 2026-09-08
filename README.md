@@ -88,7 +88,7 @@ Email MCP tool  —  dispatches the outreach email
 1. Log in to Confluent Cloud.
 2. You will create an **Environment** (e.g., `workshop-kyc-nbo`) and a **Cluster** (e.g., `kyc-nbo-cluster`). The steps below walk through both.
 3. On the Confluent Cloud home screen, select **Environments** in the left-hand menu.
-<img width="431" height="261" alt="Picture1" src="https://github.com/user-attachments/assets/cfccf0b8-ca3f-4f52-89ca-633d763f6694" />
+<img width="2560" height="1226" alt="Screenshot 2026-09-08 at 09 38 43" src="https://github.com/user-attachments/assets/4960bb07-778f-4a76-a50e-79f92a7a2235" />
 
 > **[ SCREENSHOT ]** — _Confluent Cloud home → Environments in the left-hand menu_
 
