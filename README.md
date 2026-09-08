@@ -4,9 +4,6 @@
 
 A hands-on lab that builds a real-time, KYC-aware recommendation pipeline end to end: streaming data generation, Flink SQL enrichment and deterministic risk logic, and two independent Flink Streaming Agents that hand work off to each other through a Kafka topic — the first composing a personalized offer, the second dispatching the outreach email through an MCP tool.
 
-> **Audience & duration**  
-> Designed for a guided, instructor-led session of roughly 90–120 minutes. Attendees work in their own Confluent Cloud and AWS accounts and leave with a running pipeline they can keep exploring.
-
 ---
 
 ## Contents
