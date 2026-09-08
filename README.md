@@ -600,9 +600,21 @@ Choose **Send Email** tool:
 Click **Connect**:
 <img width="1298" height="624" alt="2" src="https://github.com/user-attachments/assets/ce905820-fc01-4a50-a872-0ff20840dcaa" />
 
-Work through the Gmail connection prompts: choose your Google account, click **Continue**, grant Zapier the required permissions by checking all the boxes, scroll down and click **Continue**, then click **Add tool**.
+Work through the Gmail connection prompts by choosing your Google account: 
 
 > **[ SCREENSHOT ]** — _Gmail OAuth consent → grant permissions → Add tool_
+
+click **Continue**: 
+
+
+Grant Zapier the required permissions by checking all the boxes: 
+
+
+Scroll down and click **Continue** 
+
+
+Click **Add tool**.
+
 
 Open the **Connect** tab and click **Generate token**. Copy the token — you will paste it into the Flink MCP connection in Step 7.
 
