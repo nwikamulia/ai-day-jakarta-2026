@@ -704,9 +704,13 @@ CREATE TABLE email_dispatch_log (
   status VARCHAR,
   response VARCHAR
 );
+```
 
+```sql
 ALTER TABLE next_best_offers SET ('changelog.mode' = 'append');
+```
 
+```sql
 INSERT INTO email_dispatch_log
 SELECT
   CURRENT_TIMESTAMP,
