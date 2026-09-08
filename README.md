@@ -600,7 +600,11 @@ Choose **Send Email** tool:
 Click **Connect**:
 <img width="1298" height="624" alt="2" src="https://github.com/user-attachments/assets/ce905820-fc01-4a50-a872-0ff20840dcaa" />
 
-Work through the Gmail connection prompts by choosing your Google account: 
+Work through the Gmail connection prompts by clicking Connect:
+<img width="1316" height="630" alt="image" src="https://github.com/user-attachments/assets/9b473924-55a9-4d3c-88e0-e9c256e6046d" />
+
+Choose your Google account: 
+<img width="1305" height="625" alt="image" src="https://github.com/user-attachments/assets/49d1bfc4-bf96-478d-a79d-360d3f92e7b1" />
 
 > **[ SCREENSHOT ]** — _Gmail OAuth consent → grant permissions → Add tool_
 
