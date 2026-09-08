@@ -64,7 +64,7 @@ Kafka topic: next_best_offers      <=== agent-to-agent handoff point
     |
     v
 Agent 2  -  email_dispatch_agent  (Flink Streaming Agent)
-    composes subject/body  ->  calls the send_email tool
+    composes subject/body  ->  calls the gmail_send_email tool
     |
     v
 Email MCP tool  -  dispatches the outreach email
@@ -334,7 +334,7 @@ Flink needs a connection to Amazon Bedrock and a registered model before it can 
 4. Note the **Inference Profile ID**, for example:
 
 ```text
-apac.anthropic.claude-3-haiku-20240307-v1:0
+global.anthropic.claude-haiku-4-5-20251001-v1:0
 ```
 
 Now open the Confluent Cloud console. Click your environment name at the top left:
@@ -366,7 +366,7 @@ WITH (
 CREATE CONNECTION bedrock_claude_connection
 WITH (
   'type' = 'bedrock',
-  'endpoint' = 'https://bedrock-runtime.ap-southeast-1.amazonaws.com/model/apac.anthropic.claude-3-haiku-20240307-v1:0/invoke',
+  'endpoint' = 'https://bedrock-runtime.ap-southeast-1.amazonaws.com/model/global.anthropic.claude-haiku-4-5-20251001-v1:0/invoke',
   'aws-access-key' = 'AKIAIOSFODNN7EXAMPLE',
   'aws-secret-key' = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
 );
@@ -564,7 +564,7 @@ Since we only have 10 distinct customers in this workshop, this join and aggrega
 
 ## Step 6: Provision the Email Dispatch Tool (MCP Server)
 
-This is the tool Agent 2 will call. It exposes a single `send_email` capability over the Model Context Protocol (MCP). In this workshop we use **Zapier's hosted MCP server** wired to the Gmail **Send Email** action.
+This is the tool Agent 2 will call. It exposes a single `gmail_send_email` capability over the Model Context Protocol (MCP). In this workshop we use **Zapier's hosted MCP server** wired to the Gmail **Send Email** action.
 
 ### 1. Create a free Zapier account
 
@@ -637,7 +637,7 @@ Copy and save the token. You will paste it into the Flink MCP connection in Step
 Create the MCP connection, substituting your environment, cluster, and Zapier token:
 
 ```sql
-CREATE CONNECTION `<environment>`.`<kafka_cluster>`.`mcp_connection`
+CREATE CONNECTION `<environment>`.`<kafka_cluster>`.`email_mcp_connection`
 WITH (
   'type' = 'mcp_server',
   'endpoint' = 'https://mcp.zapier.com/api/v1/connect',
@@ -658,21 +658,21 @@ WITH (
 );
 ```
 
-Then register the `send_email` tool against that connection:
+Then register the `gmail_send_email` tool against that connection:
 
 ```sql
-CREATE TOOL send_email_tool
+CREATE TOOL gmail_send_email_tool
 USING CONNECTION email_mcp_connection
 WITH (
   'type' = 'mcp',
-  'allowed_tools' = 'send_email',
+  'allowed_tools' = 'gmail_send_email',
   'request_timeout' = '30'
 );
 ```
 
 ### 7.2 Create the agent
 
-Agent 2 composes a subject and body from the approved offer and calls the `send_email` tool exactly once.
+Agent 2 composes a subject and body from the approved offer and calls the `gmail_send_email` tool exactly once.
 
 ```sql
 CREATE AGENT email_dispatch_agent
@@ -681,9 +681,9 @@ USING PROMPT 'You are an email composer for a retail bank''s marketing team.
 You will be given a customer''s email address and a short offer message that has
 already been approved for outreach.
 Write a polished subject line and a friendly, professional email body that
-incorporates the offer message, then call the send_email tool exactly once.
+incorporates the offer message, then call the gmail_send_email tool exactly once.
 The "to" parameter must be passed as a single plain string, never an array.'
-USING TOOLS send_email_tool
+USING TOOLS gmail_send_email_tool
 WITH (
   'max_iterations' = '10',
   'max_consecutive_failures' = '3',
