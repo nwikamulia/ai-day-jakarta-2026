@@ -339,8 +339,7 @@ apac.anthropic.claude-3-7-sonnet-20250219-v1:0
 ```
 
 Now open the Confluent Cloud console. Click your environment name at the top left, then select **Flink** in the left-hand menu.
-<img width="512" height="246" alt="image" src="https://github.com/user-attachments/assets/25f7e0aa-42ef-4c96-8193-9600cf3193a2" />
-
+<img width="1644" height="787" alt="Picture12" src="https://github.com/user-attachments/assets/ecd53433-36a5-49ab-842f-3e6065125bd5" />
 
 > **[ SCREENSHOT ]** — _Confluent Cloud → environment → Flink_
 
