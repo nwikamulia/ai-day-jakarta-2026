@@ -338,16 +338,19 @@ apac.anthropic.claude-3-5-sonnet-20240620-v1:0
 apac.anthropic.claude-3-7-sonnet-20250219-v1:0
 ```
 
-Now open the Confluent Cloud console. Click your environment name at the top left, then select **Flink** in the left-hand menu.
+Now open the Confluent Cloud console. Click your environment name at the top left:
 <img width="1644" height="787" alt="Picture12" src="https://github.com/user-attachments/assets/ecd53433-36a5-49ab-842f-3e6065125bd5" />
 
-> **[ SCREENSHOT ]** — _Confluent Cloud → environment → Flink_
+Click **Flink** in the left-hand menu:
+<img width="2560" height="1230" alt="image" src="https://github.com/user-attachments/assets/508b92b1-3252-4f95-8097-4c82e568ca2c" />
 
-Click the **Compute pools** tab, then click **SQL Workspace** (or **Open SQL workspace**) on the Flink compute pool you created earlier.
+Click the **Compute pools** tab: 
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/032ef4d5-6a51-4249-9dd1-c00de2d20283" />
 
-> **[ SCREENSHOT ]** — _Flink → Compute pools → SQL Workspace on kyc_computepool_
+Click **SQL Workspace** on the Flink compute pool you created earlier:
+<img width="2560" height="1230" alt="image" src="https://github.com/user-attachments/assets/36df0728-d030-4962-aaa9-31d735464799" />
 
-Run these statements in the Flink SQL workspace to create the connection and the model:
+Run these statements in the Flink SQL workspace to create the connection:
 
 ```sql
 CREATE CONNECTION bedrock_claude_connection
@@ -357,21 +360,9 @@ WITH (
   'aws-access-key' = '<YOUR_AWS_ACCESS_KEY>',
   'aws-secret-key' = '<YOUR_AWS_SECRET_KEY>'
 );
-
-CREATE MODEL claude_haiku_model
-INPUT (text STRING)
-OUTPUT (response STRING)
-WITH (
-  'provider' = 'bedrock',
-  'task' = 'text_generation',
-  'bedrock.input_format' = 'ANTHROPIC-MESSAGES',
-  'bedrock.connection' = 'bedrock_claude_connection',
-  'bedrock.params.max_tokens' = '1024'
-);
 ```
 
 **Example** (with a concrete region and inference profile):
-
 ```sql
 CREATE CONNECTION bedrock_claude_connection
 WITH (
@@ -384,9 +375,6 @@ WITH (
 
 > **Keep the model ID future-proof**  
 > Replace `<INFERENCE_PROFILES_ID>` with whichever Claude Haiku-class model ID is currently enabled for your account on the Bedrock **Model access** page. This keeps the workshop working as Anthropic ships new model versions.
-
-> **Never ship real credentials**  
-> The `aws-access-key` and `aws-secret-key` values in the example are placeholder/dummy values. Substitute your own keys at run time and never paste real secrets into a shared handout or a screen you are presenting.
 
 Finally, run this query to create the model:
 
@@ -508,22 +496,22 @@ This table is the handoff point to Agent 2, so its key must be **raw bytes** (no
 
 ```sql
 CREATE TABLE next_best_offers (
-  `key` VARCHAR,
-  customer_id VARCHAR,
-  order_id BIGINT,
-  customer_segment VARCHAR,
-  target_offer_quadrant VARCHAR,
-  category_purchased VARCHAR,
-  region VARCHAR,
-  email VARCHAR,
-  should_email BOOLEAN,
-  ai_generated_offer VARCHAR,
-  PRIMARY KEY (`key`) NOT ENFORCED
+    `key` VARCHAR,
+    customer_id VARCHAR,
+    order_id BIGINT,
+    customer_segment VARCHAR,
+    target_offer_quadrant VARCHAR,
+    category_purchased VARCHAR,
+    region VARCHAR,
+    email VARCHAR,
+    should_email BOOLEAN,
+    ai_generated_offer VARCHAR,
+    PRIMARY KEY (`key`) NOT ENFORCED
 ) DISTRIBUTED BY HASH(`key`) INTO 1 BUCKETS
 WITH (
-  'connector' = 'confluent',
-  'key.format' = 'raw',
-  'value.format' = 'avro-registry'
+    'connector' = 'confluent',
+    'key.format' = 'raw',
+    'value.format' = 'avro-registry'
 );
 ```
 
@@ -537,36 +525,36 @@ Use `INSERT INTO` execution (not `CREATE VIEW`, which does not support `LATERAL 
 ```sql
 INSERT INTO next_best_offers
 SELECT
-  `key`,
-  LAST_VALUE(customer_id) AS customer_id,
-  LAST_VALUE(order_id) AS order_id,
-  LAST_VALUE(customer_segment) AS customer_segment,
-  LAST_VALUE(target_offer_quadrant) AS target_offer_quadrant,
-  LAST_VALUE(category) AS category_purchased,
-  LAST_VALUE(region) AS region,
-  LAST_VALUE(email) AS email,
-  LAST_VALUE(should_email) AS should_email,
-  LAST_VALUE(ai_generated_offer) AS ai_generated_offer
+    `key`,
+    LAST_VALUE(customer_id) AS customer_id,
+    LAST_VALUE(order_id) AS order_id,
+    LAST_VALUE(customer_segment) AS customer_segment,
+    LAST_VALUE(target_offer_quadrant) AS target_offer_quadrant,
+    LAST_VALUE(category) AS category_purchased,
+    LAST_VALUE(region) AS region,
+    LAST_VALUE(email) AS email,
+    LAST_VALUE(should_email) AS should_email,
+    LAST_VALUE(ai_generated_offer) AS ai_generated_offer
 FROM (
-  SELECT
-    b.customer_id AS `key`,
-    b.customer_id, b.order_id, b.customer_segment, b.target_offer_quadrant,
-    b.category, b.region, b.email, b.should_email,
-    a.response AS ai_generated_offer
-  FROM nbo_business_logic b,
-  LATERAL TABLE(
-    AI_RUN_AGENT(
-      'nbo_recommender_agent',
-      'Customer segment: ' || b.customer_segment ||
-      '. Region: ' || b.region || ', Indonesia' ||
-      '. Category purchased: ' || b.category ||
-      '. Recommended offer type: ' || b.target_offer_quadrant ||
-      '. Credit score: ' || CAST(b.credit_score AS STRING) ||
-      '. Risk tier: ' || b.risk_tier ||
-      '. Write the personalized offer message now.',
-      b.customer_id
-    )
-  ) AS a(status, response)
+    SELECT
+        b.customer_id AS `key`,
+        b.customer_id, b.order_id, b.customer_segment, b.target_offer_quadrant,
+        b.category, b.region, b.email, b.should_email,
+        a.response AS ai_generated_offer
+    FROM nbo_business_logic b,
+    LATERAL TABLE(
+        AI_RUN_AGENT(
+            'nbo_recommender_agent',
+            'Customer segment: ' || b.customer_segment ||
+            '. Region: ' || b.region || ', Indonesia' ||
+            '. Category purchased: ' || b.category ||
+            '. Recommended offer type: ' || b.target_offer_quadrant ||
+            '. Credit score: ' || CAST(b.credit_score AS STRING) ||
+            '. Risk tier: ' || b.risk_tier ||
+            '. Write the personalized offer message now.',
+            b.customer_id
+        )
+    ) AS a(status, response)
 ) raw_offers
 GROUP BY `key`;
 ```
