@@ -252,6 +252,19 @@ Navigate to **Connectors → Add Connector → Sample Data (Datagen Source) → 
 > The `customer_id` and `item_id` option pools are intentionally the same 10 values across all three connectors. This guarantees that the Flink joins in Step 4 hit real matches instead of dead-ending on random, non-overlapping IDs.
 
 ### Option B - Postman (REST API)
+Click the hamburger menu on the top right of the page:
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/5b81cc05-a66c-4659-8b07-63bf7c033766" />
+
+Click on the API keys option:
+<img width="2560" height="1228" alt="image" src="https://github.com/user-attachments/assets/46c4da95-b2c7-44f0-a0c5-c9b115ad261f" />
+
+Click the Add API key button:
+<img width="2560" height="1234" alt="image" src="https://github.com/user-attachments/assets/f902c9a4-038f-4779-8c17-6d89b152a425" />
+
+Create a cloud resource management API key and API secret:
+<img width="2560" height="1226" alt="image" src="https://github.com/user-attachments/assets/bb7e03ab-75ac-40be-bfd8-118983dfa3a2" />
+
+
 Create
 <img width="2155" height="1231" alt="image" src="https://github.com/user-attachments/assets/c32b5fd4-9a6d-4ba7-bc23-0e666ace4ac8" />
 
