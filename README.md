@@ -79,7 +79,6 @@ Email MCP tool  —  dispatches the outreach email
 
 - A **Confluent Cloud** account with a Basic or Standard cluster and a Flink compute pool provisioned in the same region.
 - An **AWS account** with Amazon Bedrock model access enabled for a fast, low-cost Anthropic Claude model. Check the AWS Bedrock console under **Model access** for whichever Claude Haiku-class model is currently available to you. Haiku-class models are recommended here for low latency and low cost on a high-throughput stream.
-- **Python 3.10+** and `pip install "mcp[cli]"` — only required if you choose to run a local Python mock email MCP server instead of the hosted Zapier option used in Step 6.
 - **Postman** (optional) if you prefer to provision the Datagen connectors via the REST API rather than the UI.
 
 ---
