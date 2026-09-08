@@ -744,6 +744,10 @@ LATERAL TABLE(
 ) AS a(status, response);
 ```
 
+```sql
+SELECT * FROM email_dispatch_log;
+```
+
 > **What you should see**  
 > Once this runs, check your email dispatch destination, the Gmail Sent folder (or your Zapier task history), and `email_dispatch_log` in Flink. You should see personalized emails appearing for every qualifying customer, composed entirely by Agent 2 and dispatched entirely because Agent 1 decided to hand the work off. (If you chose the local Python mock server instead, watch its terminal and the `sent_emails.log` file grow.)
 
