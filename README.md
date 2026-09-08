@@ -390,25 +390,11 @@ Run these statements in the Flink SQL workspace to create the connection:
 CREATE CONNECTION bedrock_claude_connection
 WITH (
   'type' = 'bedrock',
-  'endpoint' = 'https://bedrock-runtime.<YOUR_AWS_REGION>.amazonaws.com/model/<INFERENCE_PROFILES_ID>/invoke',
+  'endpoint' = 'https://bedrock-runtime.ap-southeast-1.amazonaws.com/model/global.anthropic.claude-haiku-4-5-20251001-v1:0/invoke',
   'aws-access-key' = '<YOUR_AWS_ACCESS_KEY>',
   'aws-secret-key' = '<YOUR_AWS_SECRET_KEY>'
 );
 ```
-
-**Example** (with a concrete region and inference profile):
-```sql
-CREATE CONNECTION bedrock_claude_connection
-WITH (
-  'type' = 'bedrock',
-  'endpoint' = 'https://bedrock-runtime.ap-southeast-1.amazonaws.com/model/global.anthropic.claude-haiku-4-5-20251001-v1:0/invoke',
-  'aws-access-key' = 'AKIAIOSFODNN7EXAMPLE',
-  'aws-secret-key' = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
-);
-```
-
-> **Keep the model ID future-proof**  
-> Replace `<INFERENCE_PROFILES_ID>` with whichever Claude Haiku-class model ID is currently enabled for your account on the Bedrock **Model access** page. This keeps the workshop working as Anthropic ships new model versions.
 
 Finally, run this query to create the model:
 
@@ -672,7 +658,7 @@ Copy and save the token. You will paste it into the Flink MCP connection in Step
 Create the MCP connection, substituting your environment, cluster, and Zapier token:
 
 ```sql
-CREATE CONNECTION `<environment>`.`<kafka_cluster>`.`email_mcp_connection`
+CREATE CONNECTION `email_mcp_connection`
 WITH (
   'type' = 'mcp_server',
   'endpoint' = 'https://mcp.zapier.com/api/v1/connect',
@@ -681,17 +667,6 @@ WITH (
 );
 ```
 
-**Example:**
-
-```sql
-CREATE CONNECTION `workshop-kyc-nbo`.`kyc-nbo-cluster`.`email_mcp_connection`
-WITH (
-  'type' = 'mcp_server',
-  'endpoint' = 'https://mcp.zapier.com/api/v1/connect',
-  'token' = 'REPLACE_WITH_YOUR_ZAPIER_MCP_TOKEN',
-  'transport-type' = 'STREAMABLE_HTTP'
-);
-```
 
 Then register the `gmail_send_email` tool against that connection:
 
