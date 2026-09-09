@@ -264,9 +264,6 @@ Click the Add API key button:
 Create a cloud resource management API key and API secret:
 <img width="2560" height="1226" alt="image" src="https://github.com/user-attachments/assets/bb7e03ab-75ac-40be-bfd8-118983dfa3a2" />
 
-Paste the cloud resource management API key and API secret in the Authorization tab in Postman:
-<img width="2550" height="1284" alt="image" src="https://github.com/user-attachments/assets/c20ed7cb-de13-4318-a73d-e53b89d4f471" />
-
 Open Postman and click the Import button:
 <img width="2560" height="1317" alt="image" src="https://github.com/user-attachments/assets/e37639fb-3526-48c9-aeda-f630020f740a" />
 
