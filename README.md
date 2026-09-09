@@ -80,7 +80,7 @@ Email MCP tool  -  dispatches the outreach email
 - A **Confluent Cloud** account with a Basic or Standard cluster and a Flink compute pool provisioned in the same region.
 - An **AWS account** with Amazon Bedrock model access enabled for a fast, low-cost Anthropic Claude model. Check the AWS Bedrock console under **Model access** for whichever Claude Haiku-class model is currently available to you. Haiku-class models are recommended here for low latency and low cost on a high-throughput stream.
 - **Postman** (optional) if you prefer to provision the Datagen connectors via the REST API rather than the UI.
-- **Confluent Cloud Connector Workshop API.postman_collection.json file** (optional) if you prefer to create the connectors through the API instead of the UI. Download the Postman collection [here](https://github.com/nwikamulia/ai-day-jakarta-2026/blob/main/Confluent%20Cloud%20Connector%20Workshop%20API.postman_collection.json).
+- **Confluent Cloud Connector Workshop API.postman_collection.json file** (optional) if you prefer to create the connectors through the API instead of the UI. Download the Postman collection [here](https://github.com/nwikamulia/ai-day-jakarta-2026/blob/main/Confluent%20Cloud%20Connector%20Workshop%20API.postman_collection.json) and the Postman global variable [here](https://github.com/nwikamulia/ai-day-jakarta-2026/blob/main/GLOBAL.postman_environment.json).
 
 ---
 
