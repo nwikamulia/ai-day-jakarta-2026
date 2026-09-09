@@ -273,9 +273,13 @@ Open Postman and click the Import button:
 Upload the Postman collection you downloaded previously:
 <img width="2560" height="1321" alt="image" src="https://github.com/user-attachments/assets/8edcece9-062f-41c2-a5ac-40442a3ea19d" />
 
-Open the "Create Connector Product" file:
+Upload the Postman global environment variable file:
+<img width="1728" height="992" alt="image" src="https://github.com/user-attachments/assets/6dca057a-415c-48fe-b490-81b7957d1983" />
 
-Fill the environment variables:
+Activate the Postman global environment variable file:
+<img width="1728" height="995" alt="image" src="https://github.com/user-attachments/assets/ccf51e67-9ded-45a1-b1e0-547727e39404" />
+
+Fill the global environment variables:
 <img width="2560" height="1322" alt="image" src="https://github.com/user-attachments/assets/4eae926a-f0d0-463e-a647-c2e6b5c1d47a" />
 
 You can fill in these environment variables with the following values:
@@ -284,72 +288,14 @@ You can fill in these environment variables with the following values:
 - **CONFLUENT_CLUSTER_ID:** Your Confluent Cloud Kafka cluster ID, for example: lkc-mvz5x8w. You can find the Kafka cluster ID in the Clusters page.
 - **cluster_api_key:** The Kafka cluster API key that you created in the previous step.
 - **cluster_api_secret:** The Kafka cluster API secret that you created in the previous step.
+- **CONFLUENT_CLOUD_API_KEY:** The cloud resource management API key that you created in the previous step.
+- **CONFLUENT_CLOUD_API_SECRET:** The cloud resource management API secret that you created in the previous step.
 
-Click the Send button to create the connector. Then, repeat the same step for the "Create Connector Transactions" and the "Create Connector Customer" files.
+<img width="1728" height="998" alt="image" src="https://github.com/user-attachments/assets/cbf2da00-d612-4285-b481-d2da8d084b52" />
 
-If you prefer to provision the connectors programmatically, POST each payload below.
 
-- **URL:** `https://api.confluent.cloud/connect/v1/environments/{{environment_id}}/clusters/{{cluster_id}}/connectors`
-- **Method:** `POST`
-- **Auth:** Basic Auth using your cluster API Key/Secret (or org-level credentials).
-- **Header:** `Content-Type: application/json`
-
-#### 1. Customers Datagen payload (KYC profile)
-
-```json
-{
-  "name": "DatagenSource_Customers",
-  "config": {
-    "connector.class": "DatagenSource",
-    "name": "DatagenSource_Customers",
-    "kafka.api.key": "{{cluster_api_key}}",
-    "kafka.api.secret": "{{cluster_api_secret}}",
-    "kafka.topic": "customers",
-    "output.data.format": "AVRO",
-    "max.interval": "1000",
-    "tasks.max": "1",
-    "schema.string": "{\"type\":\"record\",\"name\":\"Customer\",\"fields\":[{\"name\":\"customer_id\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"customer_1\",\"customer_2\",\"customer_3\",\"customer_4\",\"customer_5\",\"customer_6\",\"customer_7\",\"customer_8\",\"customer_9\",\"customer_10\"]}}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Andi Wijaya\",\"Siti Rahma\",\"Budi Santoso\",\"Dewi Lestari\",\"Rizky Pratama\",\"Nadia Putri\",\"Fajar Nugroho\",\"Maya Sari\",\"Agus Setiawan\",\"Rina Marlina\"]}}},{\"name\":\"email\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"andi.wijaya@example.com\",\"siti.rahma@example.com\",\"budi.santoso@example.com\",\"dewi.lestari@example.com\",\"rizky.pratama@example.com\",\"nadia.putri@example.com\",\"fajar.nugroho@example.com\",\"maya.sari@example.com\",\"agus.setiawan@example.com\",\"rina.marlina@example.com\"]}}},{\"name\":\"gender\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Male\",\"Female\"]}}},{\"name\":\"region\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Jakarta\",\"Jawa Barat\",\"Jawa Tengah\",\"Jawa Timur\",\"Bali\",\"Sumatra Utara\",\"Sulawesi Selatan\"]}}},{\"name\":\"employment_type\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Employed\",\"Self-Employed\",\"Business Owner\",\"Student\",\"Retired\"]}}},{\"name\":\"dependents\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"range\":{\"min\":0,\"max\":5}}}},{\"name\":\"credit_score\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"range\":{\"min\":300,\"max\":850}}}},{\"name\":\"risk_tier\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Low\",\"Medium\",\"High\"]}}},{\"name\":\"account_tenure_years\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"range\":{\"min\":0,\"max\":20}}}},{\"name\":\"loyalty_tier\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Bronze\",\"Silver\",\"Gold\",\"Platinum\"]}}}]}"
-  }
-}
-```
-
-#### 2. Products Datagen payload (catalog reference)
-
-```json
-{
-  "name": "DatagenSource_Products",
-  "config": {
-    "connector.class": "DatagenSource",
-    "name": "DatagenSource_Products",
-    "kafka.api.key": "{{cluster_api_key}}",
-    "kafka.api.secret": "{{cluster_api_secret}}",
-    "kafka.topic": "products",
-    "output.data.format": "AVRO",
-    "max.interval": "1000",
-    "tasks.max": "1",
-    "schema.string": "{\"type\":\"record\",\"name\":\"Product\",\"fields\":[{\"name\":\"item_id\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"item_1\",\"item_2\",\"item_3\",\"item_4\",\"item_5\",\"item_6\",\"item_7\",\"item_8\",\"item_9\",\"item_10\"]}}},{\"name\":\"product_name\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Wireless Earbuds\",\"Running Shoes\",\"Rice Cooker\",\"Sofa Set\",\"Facial Serum\",\"Motor Oil\",\"Smart TV\",\"Backpack\",\"Blender\",\"Air Fryer\"]}}},{\"name\":\"category\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Electronics\",\"Fashion\",\"Groceries\",\"Home & Living\",\"Beauty\",\"Automotive\"]}}},{\"name\":\"price\",\"type\":{\"type\":\"double\",\"arg.properties\":{\"range\":{\"min\":50000,\"max\":5000000}}}},{\"name\":\"margin_tier\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"Low\",\"Medium\",\"High\"]}}},{\"name\":\"inventory_level\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"range\":{\"min\":0,\"max\":1000}}}}]}"
-  }
-}
-```
-
-#### 3. Transactions Datagen payload (live orders)
-
-```json
-{
-  "name": "DatagenSource_Transactions",
-  "config": {
-    "connector.class": "DatagenSource",
-    "name": "DatagenSource_Transactions",
-    "kafka.api.key": "{{cluster_api_key}}",
-    "kafka.api.secret": "{{cluster_api_secret}}",
-    "kafka.topic": "transactions",
-    "output.data.format": "AVRO",
-    "max.interval": "1000",
-    "tasks.max": "1",
-    "schema.string": "{\"type\":\"record\",\"name\":\"Transaction\",\"fields\":[{\"name\":\"order_id\",\"type\":{\"type\":\"long\",\"arg.properties\":{\"range\":{\"min\":1,\"max\":999999}}}},{\"name\":\"customer_id\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"customer_1\",\"customer_2\",\"customer_3\",\"customer_4\",\"customer_5\",\"customer_6\",\"customer_7\",\"customer_8\",\"customer_9\",\"customer_10\"]}}},{\"name\":\"item_id\",\"type\":{\"type\":\"string\",\"arg.properties\":{\"options\":[\"item_1\",\"item_2\",\"item_3\",\"item_4\",\"item_5\",\"item_6\",\"item_7\",\"item_8\",\"item_9\",\"item_10\"]}}},{\"name\":\"order_units\",\"type\":{\"type\":\"int\",\"arg.properties\":{\"range\":{\"min\":1,\"max\":5}}}},{\"name\":\"order_amount\",\"type\":{\"type\":\"double\",\"arg.properties\":{\"range\":{\"min\":10000,\"max\":5000000}}}}]}"
-  }
-}
-```
+Click the "Create Connector Product" and click Send button to create the connector. Then, repeat the same step for the "Create Connector Transactions" and the "Create Connector Customer" files.
+<img width="1728" height="994" alt="image" src="https://github.com/user-attachments/assets/d5ca1731-bb99-4406-b9e9-79a9eb27d662" />
 
 ---
 
